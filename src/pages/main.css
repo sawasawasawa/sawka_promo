@@ -1,0 +1,87 @@
+/*@import url("fonts.css");*/
+/*@import url('https://fonts.googleapis.com/css?family=Press Start 2P|Share+Tech+Mono&subset=latin-ext');*/
+/*@import url('https://fonts.googleapis.com/css?family=Press Start 2P|Source+Code+Pro&subset=latin-ext');*/
+@import url('https://fonts.googleapis.com/css?family=Press+Start+2P|Source+Code+Pro&subset=latin-ext');
+
+
+:root {
+    --main-color: #1A9BFC;
+}
+
+* {
+    max-width: 100vw;
+}
+
+body {
+    font-family: 'Press Start 2P', Fallback, sans-serif;
+    color: var(--main-color);
+}
+home, body {
+    margin: 0;
+    padding: 0;
+}
+section {
+    /*padding-top: 1em;*/
+    min-height: 100vh;
+/*}*/
+/**/
+/*section .content {*/
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+section > h1, section > div {
+    margin-top: 50px
+}
+
+section {
+    padding-bottom: 100px;
+}
+
+p, ul {
+    font-size: 18px;
+    font-family: Source Code Pro, sans-serif;
+}
+
+.page-title {
+    font-family: Source Code Pro;
+    font-size: 3em;
+    padding-top: 60px;
+    margin-left: 20px;
+    opacity: 0;
+}
+
+.page-title span {
+    letter-spacing: -0.25em;
+}
+
+.slash {
+    color: rgba(0, 0, 0, 0.2);
+}
+
+.container {
+    padding:20px;
+    min-width: 300px;
+    max-width: 500px;
+}
+
+.color-inverse a,
+.color-inverse {
+    color: white !important;
+    background-color: var(--main-color);
+}
+
+.grid-to-animate {
+    display: block;
+}
+
+.grid {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 1rem;
+    padding-bottom: 0;
+    padding-right:0;
+    /*max-width: 600px;*/
+}

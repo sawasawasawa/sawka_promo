@@ -1,0 +1,30 @@
+.Header {
+  position: fixed;
+  max-width: 100vw;
+  display: flex;
+  margin: auto;
+  width: 100%;
+  justify-content: center;
+  flex-wrap: wrap;
+  z-index: 10;
+  /*text-shadow: 1px 1px #ecf0f1, -1px -1px #ecf0f1, 1px -1px #ecf0f1, -1px 1px #ecf0f1;*/
+  border-bottom: 1px solid white;
+  background-color: rgba(255, 255, 255, 0.8);
+}
+
+.menulink {
+  padding: 10px 30px;
+  font-size: 15px;
+  opacity: 0
+}
+
+@media screen and (max-width: 500px) {
+  .Header a {
+    font-size: 10px;
+    padding: 10px;
+  }
+}
+
+.azogonkiem {
+  font-size: 1em
+}

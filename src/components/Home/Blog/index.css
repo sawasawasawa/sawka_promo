@@ -1,0 +1,49 @@
+#blog {
+    position: relative;
+    padding-top: 0;
+    color: #317187;
+}
+
+@media screen and (max-width: 500px) {
+    #blog {
+        background-color: #0693ff;
+    }
+}
+
+#bloglink {
+    z-index: 2;
+    pointer-events: none;
+}
+
+#bloglink__header {
+    padding-left: 20px;
+    z-index: 1;
+    font-size: 2em;
+    text-shadow: 3px 3px white;
+}
+
+#bloglink__header h5 {
+    z-index: 1;
+    text-shadow: 2px 2px white;
+}
+
+#bloglink__text {
+    padding:20px;
+    background-color: rgba(255,255,255,0.7);
+}
+
+#blog a {
+    position: absolute;
+    overflow: hidden;
+    background-color: transparent;
+}
+
+#blog--svg-container {
+    /*position: absolute;*/
+    /*top: -100vh;*/
+    z-index: 0;
+}
+
+section#blog > div {
+    margin-top: 0
+}
