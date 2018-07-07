@@ -1,0 +1,51 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/Users/sawa/.nvm/versions/node/v6.1.0/bin/node',
+1 verbose cli   '/Users/sawa/.nvm/versions/node/v6.1.0/lib/node_modules/npm/bin/npm-cli.js',
+1 verbose cli   'install',
+1 verbose cli   'react-icons/lib/fa/linkedin-in' ]
+2 info using npm@3.8.6
+3 info using node@v6.1.0
+4 silly loadCurrentTree Starting
+5 silly install loadCurrentTree
+6 silly install readLocalPackageData
+7 silly fetchPackageMetaData react-icons/lib/fa/linkedin-in
+8 silly fetchOtherPackageData react-icons/lib/fa/linkedin-in
+9 silly cache add args [ 'react-icons/lib/fa/linkedin-in', null ]
+10 verbose cache add spec react-icons/lib/fa/linkedin-in
+11 silly cache add parsed spec Result {
+11 silly cache add   raw: 'react-icons/lib/fa/linkedin-in',
+11 silly cache add   scope: null,
+11 silly cache add   name: null,
+11 silly cache add   rawSpec: 'react-icons/lib/fa/linkedin-in',
+11 silly cache add   spec: '/Users/sawa/WebstormProjects/sawka_promo_clean/react-icons/lib/fa/linkedin-in',
+11 silly cache add   type: 'local' }
+12 error addLocal Could not install /Users/sawa/WebstormProjects/sawka_promo_clean/react-icons/lib/fa/linkedin-in
+13 silly fetchPackageMetaData Error: ENOENT: no such file or directory, open '/Users/sawa/WebstormProjects/sawka_promo_clean/react-icons/lib/fa/linkedin-in'
+13 silly fetchPackageMetaData     at Error (native)
+13 silly fetchPackageMetaData  error for react-icons/lib/fa/linkedin-in { Error: ENOENT: no such file or directory, open '/Users/sawa/WebstormProjects/sawka_promo_clean/react-icons/lib/fa/linkedin-in'
+13 silly fetchPackageMetaData     at Error (native)
+13 silly fetchPackageMetaData   errno: -2,
+13 silly fetchPackageMetaData   code: 'ENOENT',
+13 silly fetchPackageMetaData   syscall: 'open',
+13 silly fetchPackageMetaData   path: '/Users/sawa/WebstormProjects/sawka_promo_clean/react-icons/lib/fa/linkedin-in' }
+14 silly rollbackFailedOptional Starting
+15 silly rollbackFailedOptional Finishing
+16 silly runTopLevelLifecycles Starting
+17 silly runTopLevelLifecycles Finishing
+18 silly install printInstalled
+19 verbose stack Error: ENOENT: no such file or directory, open '/Users/sawa/WebstormProjects/sawka_promo_clean/react-icons/lib/fa/linkedin-in'
+19 verbose stack     at Error (native)
+20 verbose cwd /Users/sawa/WebstormProjects/sawka_promo_clean
+21 error Darwin 15.4.0
+22 error argv "/Users/sawa/.nvm/versions/node/v6.1.0/bin/node" "/Users/sawa/.nvm/versions/node/v6.1.0/lib/node_modules/npm/bin/npm-cli.js" "install" "react-icons/lib/fa/linkedin-in"
+23 error node v6.1.0
+24 error npm  v3.8.6
+25 error path /Users/sawa/WebstormProjects/sawka_promo_clean/react-icons/lib/fa/linkedin-in
+26 error code ENOENT
+27 error errno -2
+28 error syscall open
+29 error enoent ENOENT: no such file or directory, open '/Users/sawa/WebstormProjects/sawka_promo_clean/react-icons/lib/fa/linkedin-in'
+30 error enoent ENOENT: no such file or directory, open '/Users/sawa/WebstormProjects/sawka_promo_clean/react-icons/lib/fa/linkedin-in'
+30 error enoent This is most likely not a problem with npm itself
+30 error enoent and is related to npm not being able to find a file.
+31 verbose exit [ -2, true ]

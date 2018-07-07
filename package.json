@@ -10,8 +10,11 @@
     "gatsby-plugin-react-helmet": "^2.0.8",
     "gsap": "^1.20.4",
     "react-anchor-link-smooth-scroll": "^1.0.5",
+    "react-burger-menu": "^2.4.2",
     "react-helmet": "^5.2.0",
-    "react-transition-group": "^2.3.0"
+    "react-icons": "^2.2.7",
+    "react-transition-group": "^2.3.0",
+    "typed.js": "^2.0.6"
   },
   "keywords": [
     "gatsby"

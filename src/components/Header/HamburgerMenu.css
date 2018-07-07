@@ -1,0 +1,54 @@
+#HamburgerMenu {
+    /*background-blend-mode: luminosity;*/
+}
+
+.bm-burger-button {
+    position: fixed;
+    width: 36px;
+    height: 30px;
+    left: 36px;
+    top: 36px;
+    mix-blend-mode: multiply;
+}
+
+.bm-burger-bars {
+    background-color: #1A9BFC
+    /*background-color: blue*/
+}
+
+.bm-cross-button {
+    height: 24px;
+    width: 24px;
+}
+
+.bm-menu {
+    font-family: 'Press Start 2P', Fallback, sans-serif;
+    background: #373a47;
+    padding: 2.5em 1.5em 0;
+    font-size: 1em;
+}
+
+.bm-morph-shape {
+    fill: #373a4;
+}
+
+.bm-overlay {
+    overflow: hidden;
+    background: rgba(0, 0, 0, 0.3);
+}
+
+
+.HamburgerMenu__Links {
+    display: block;
+}
+
+.HamburgerMenu__Link {
+    min-width: 100%;
+    padding: 10px 30px;
+    font-size: 15px;
+    overflow: hidden;
+}
+
+.azogonkiem {
+    font-size: 1em
+}

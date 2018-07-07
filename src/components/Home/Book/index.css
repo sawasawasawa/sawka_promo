@@ -1,4 +1,16 @@
-#book > div {
-    min-width: 300px;
+#book .container {
+    max-width: 900px;
+}
+
+.BookElement__description div {
     max-width: 500px;
+}
+.BookElement__description {
+    display: flex;
+    flex-wrap: wrap;
+    /*max-width: 500px;*/
+}
+
+#reklama .section-title {
+
 }

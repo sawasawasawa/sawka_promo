@@ -3,6 +3,11 @@
     color: #DFDF54;
 }
 
+#opisy .section-title {
+    background-color: #2D7188;
+    color: #ABC262
+}
+
 #opisy img {
     max-width: 90%;
 }

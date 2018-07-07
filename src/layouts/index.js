@@ -2,7 +2,8 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Helmet from 'react-helmet'
 
-import Header from '../components/Header'
+import {HamburgerMenu} from "../components/Header/HamburgerMenu";
+import AnimatedMenu from "../components/Header/AnimatedMenu";
 
 const TemplateWrapper = ({ children }) => (
   <div>
@@ -13,7 +14,9 @@ const TemplateWrapper = ({ children }) => (
         { name: 'keywords', content: 'marketing' },
       ]}
     />
-    <Header />
+    {/*<Header />*/}
+    <HamburgerMenu/>
+    <AnimatedMenu />
     {children()}
   </div>
 )

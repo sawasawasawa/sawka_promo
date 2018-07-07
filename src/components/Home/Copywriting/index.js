@@ -1,11 +1,13 @@
 import React from 'react'
 import './index.css'
+import AnchorLink from 'react-anchor-link-smooth-scroll'
 
 export const Copywriting = () => (
-  <section id='teksty'>
+  <section id='teksty' className='color-inverse'>
     <div className='container'>
-      <h1>Napisz<sub className='azogonkiem'>ę</sub> dla Ciebie</h1>
-      <img src='../img/dog.gif'/>
+      {/*<h1>Napisz<sub className='azogonkiem'>ę</sub> dla Ciebie</h1>*/}
+      <div className="section-title">Napiszę dla Ciebie</div>
+      <img className='teksty__dog' src='../img/dog.gif'/>
     </div>
     <div className='container'>
       <h3>Copywriting</h3>
@@ -38,7 +40,7 @@ export const Copywriting = () => (
         <br/>
         <br/>Jeśli nie masz na to czasu i chęci
         <br/>
-        <a style={{color: '#ff8'}} href="mailto:ewa.dziadosz@gmail.com">Napisz do mnie!</a>
+        <AnchorLink href="#contact" style={{color: '#ff8'}}>Napisz do mnie!</AnchorLink>
       </p>
     </div>
   </section>

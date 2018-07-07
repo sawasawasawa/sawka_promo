@@ -16,7 +16,8 @@ export class Blog extends React.Component {
       <section id='blog' >
         <div id='bloglink__header'>
           <h1 className=''>Blog</h1>
-          <h5>Dlaczego pisz<sub className='azogonkiem'>ę</sub>?</h5>
+          {/*<h5>Dlaczego pisz<sub className='azogonkiem'>ę</sub>?</h5>*/}
+          <h5>Dlaczego piszę?</h5>
         </div>
       <div id='bloglink' target='_blank' className='blog-link-text container'>
         <div id='bloglink__text'>
@@ -27,6 +28,7 @@ export class Blog extends React.Component {
           </p><p>
             Piszę też dla zabawy. Tak, także dlatego, żeby zarabiać pieniądze. Nie muszę tego robić dla zbawienia świata. Wiem, programiści stworzyli programy, które potrafią tworzyć proste teksty a nawet kaligramy. Ja mam jednak poczucie humoru i śmieję się z motylka ułożonego z lekkich słów.  To jest dobry i prawdziwy powód do pisania.
           </p>
+          <h2>Przejdź do bloga</h2>
         </div>
       </div>
 
@@ -39,7 +41,6 @@ export class Blog extends React.Component {
 }
 
 function createSVG() {
-  console.log("_______ document.documentElement.clientHeight, window.document.getElementById('bloglink').offsetHeight", document.documentElement.clientHeight, window.document.getElementById('bloglink').offsetHeight);
   var w = document.documentElement.clientWidth,
     h = Math.max(document.documentElement.clientHeight, window.document.getElementById('blog').offsetHeight, window.document.getElementById('bloglink').offsetHeight + 250),
     z = 40,
@@ -50,7 +51,6 @@ function createSVG() {
     .attr("width", w)
     .attr("height", h);
 
-    console.log("_______ w", w);
   svg.selectAll("rect")
     .data(d3.range(x * y))
     .enter().append("rect")

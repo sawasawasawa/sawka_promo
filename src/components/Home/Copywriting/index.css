@@ -3,6 +3,12 @@
     background-color: #1A9BFC;
 }
 
+#teksty .section-title,
 #teksty a {
     color: lightgreen
+}
+
+.teksty__dog {
+    display: block;
+    margin: auto;
 }

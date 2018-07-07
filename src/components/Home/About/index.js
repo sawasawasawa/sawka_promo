@@ -1,4 +1,6 @@
 import React from 'react'
+import Linkedin from 'react-icons/lib/fa/linkedin';
+import Newspaper from 'react-icons/lib/fa/newspaper-o';
 import './index.css'
 
 export class About extends React.Component {
@@ -11,7 +13,7 @@ export class About extends React.Component {
           </div>
         </div>
         <div className='container'>
-          <h1>Autor lubelski</h1>
+          <div className="section-title">O mnie</div>
           <p>
             Młoda nie jestem, chociaż jest moda na młodość. Zajmowałam się jednak modą, jako nauczycielka
             i jako dziennikarka. Jako dziennikarka pisałam przeważnie o ludziach. Jako nauczycielka uczyłam
@@ -20,8 +22,8 @@ export class About extends React.Component {
           </p>
           <ul>
             Zobacz:
-            <li><a href="https://issuu.com/ewadziadosz" target='_blank'>Wybrane publikacje</a></li>
-            <li><a href="http://repetitiorepetitio.blogspot.com/" target='_blank'>Mój blog</a></li>
+            <li><a href="https://issuu.com/ewadziadosz" target='_blank'><Newspaper style={{padding: 5}}/>Wybrane publikacje</a></li>
+            <li><a href="https://www.linkedin.com/in/ewa-dziadosz/" target='_blank'><Linkedin style={{padding: 5, paddingBottom: 10}}/>Moja historia</a></li>
           </ul>
         </div>
       </section>

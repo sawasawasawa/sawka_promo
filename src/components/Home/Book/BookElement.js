@@ -46,10 +46,10 @@ export const BookElement = () => <div className="BookElement">
       </li>
     </ul>
   </div>
-  <div className='BookElement--title'>
-    <h3>Niunik</h3>
-    <h4>i reszta świata</h4>
-  </div>
+  {/*<div className='BookElement--title'>*/}
+    {/*<h3>Niunik</h3>*/}
+    {/*<h4>i reszta świata</h4>*/}
+  {/*</div>*/}
 </div>
 
 export default BookElement

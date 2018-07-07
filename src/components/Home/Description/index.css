@@ -1,0 +1,14 @@
+#description .container {
+  max-width: 900px;
+  padding: 40px;
+}
+
+.section-title {
+  /*font-family: 'Press Start 2P', Fallback, sans-serif;*/
+  font-size: 32px;
+  display: flex;
+  justify-content: center;
+  padding: 5px;
+  margin: 10px 50px;
+  /*border-bottom: 3px solid white;*/
+}
