@@ -24,11 +24,16 @@ section#home  > div {
   padding-top: 50px;
   padding-left: 10%;
   width: 100%;
-  /*max-width: 900px;*/
+  max-width: 1000px;
   font-family: "Press Start 2P";
   font-size: 30px;
   min-height: 90px;
   overflow: visible;
+}
+
+#typed p,
+#typed p span {
+  font-size: 30px
 }
 
 .heroes-animation--img,

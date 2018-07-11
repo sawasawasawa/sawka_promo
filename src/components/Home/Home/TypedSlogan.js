@@ -10,11 +10,14 @@ class TypedSlogan extends React.Component {
     const typedOptions = {
       typeSpeed: 40,
       smartBackspace: true,
-      stringsElement: '#typed-strings',
       loop: true,
       showCursor: false,
       startDelay: 1000,
-      endDelay:4000,
+      backSpeed: 30,
+      endDelay: 4000,
+      strings: ["<p><span>Napiszemy dla Ciebie</span> artykuł</p>",
+      "<p><span>Napiszemy dla Ciebie</span> skuteczny email</p>",
+      "<p><span>Napiszemy dla Ciebie</span> ksi<sub class='azogonkiem'>ą</sub>żk<sub class='azogonkiem'>ę</sub></p>"]
     }
 
     const typed = new Typed("#typedElement", typedOptions);
@@ -22,11 +25,6 @@ class TypedSlogan extends React.Component {
   render () {
     return (
         <div id="typed">
-          <div id="typed-strings">
-            <p><span>Napiszemy dla Ciebie</span> artykuł</p>
-            <p><span>Napiszemy dla Ciebie</span> skuteczny email</p>
-            <p><span>Napiszemy dla Ciebie</span> ksi<sub className='azogonkiem'>ą</sub>żk<sub className='azogonkiem'>ę</sub></p>
-          </div>
           <div id="typedElement"></div>
         </div>
     )

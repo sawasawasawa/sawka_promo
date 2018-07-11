@@ -3,38 +3,36 @@ import './index.css'
 import * as d3 from 'd3'
 
 export class Blog extends React.Component {
-  componentDidMount() {
+  componentDidMount = () => {
     createSVG()
   }
 
-  componentDidUpdate() {
+  componentDidUpdate = () => {
     createSVG()
   }
 
   render() {
     return (
       <section id='blog' >
+        <a href="https://repetitiorepetitio.blogspot.com/" target='_blank'>
+          <div id='blog--svg-container'></div>
+        </a>
         <div id='bloglink__header'>
           <h1 className=''>Blog</h1>
-          {/*<h5>Dlaczego pisz<sub className='azogonkiem'>ę</sub>?</h5>*/}
           <h5>Dlaczego piszę?</h5>
         </div>
-      <div id='bloglink' target='_blank' className='blog-link-text container'>
-        <div id='bloglink__text'>
-          <p>
-            Życie to szalona droga, z kałużami, zakrętami, słabo utrzymanymi odcinkami, które mogą zniszczyć opony. Piszę bo wierzę, że nauczyłam się czegoś i widzę rzeczy w taki sposób, jak wielu innych nie. Wierzę, że inne spojrzenie przyniosłoby im korzyści. Pisanie jest tak dobre jak gimnastyka, jedzenie i sen. Pozwala odegnać wrażenie, że wszystko, co robię, jest tymczasowe. Pomaga przywołać przeszłość, wyciągając klejnoty z ciemności i zobaczyć ich piękno
-          </p><p>
-            Piszę, gdy jestem głęboko wzruszona lekturą,filmem,sztuką i chcę przekazać to doświadczenie innym. Chcę podzielić się lękiem, bo to mi pomaga. Sztuka jest piękna. Słowa mogą być piękne, nawet jeśli opisują brzydotę, smutek i przemijanie. Smutek potrzebuje ujścia. Pisanie daje możliwość dawania głosu smutkowi i szansę na uzdrowienie. Pozwala ułożyć mrok w coś możliwego do zdefiniowania.
-          </p><p>
-            Piszę też dla zabawy. Tak, także dlatego, żeby zarabiać pieniądze. Nie muszę tego robić dla zbawienia świata. Wiem, programiści stworzyli programy, które potrafią tworzyć proste teksty a nawet kaligramy. Ja mam jednak poczucie humoru i śmieję się z motylka ułożonego z lekkich słów.  To jest dobry i prawdziwy powód do pisania.
-          </p>
-          <h2>Przejdź do bloga</h2>
+        <div id='bloglink' target='_blank' className='blog-link-text container'>
+          <div id='bloglink__text'>
+            <p>
+              Życie to szalona droga, z kałużami, zakrętami, słabo utrzymanymi odcinkami, które mogą zniszczyć opony. Piszę bo wierzę, że nauczyłam się czegoś i widzę rzeczy w taki sposób, jak wielu innych nie. Wierzę, że inne spojrzenie przyniosłoby im korzyści. Pisanie jest tak dobre jak gimnastyka, jedzenie i sen. Pozwala odegnać wrażenie, że wszystko, co robię, jest tymczasowe. Pomaga przywołać przeszłość, wyciągając klejnoty z ciemności i zobaczyć ich piękno
+            </p><p>
+              Piszę, gdy jestem głęboko wzruszona lekturą, filmem, sztuką i chcę przekazać to doświadczenie innym. Chcę podzielić się lękiem, bo to mi pomaga. Sztuka jest piękna. Słowa mogą być piękne, nawet jeśli opisują brzydotę, smutek i przemijanie. Smutek potrzebuje ujścia. Pisanie daje możliwość dawania głosu smutkowi i szansę na uzdrowienie. Pozwala ułożyć mrok w coś możliwego do zdefiniowania.
+            </p><p>
+              Piszę też dla zabawy. Tak, także dlatego, żeby zarabiać pieniądze. Nie muszę tego robić dla zbawienia świata. Wiem, programiści stworzyli programy, które potrafią tworzyć proste teksty a nawet kaligramy. Ja mam jednak poczucie humoru i śmieję się z motylka ułożonego z lekkich słów.  To jest dobry i prawdziwy powód do pisania.
+            </p>
+            <h2>Przejdź do bloga</h2>
+          </div>
         </div>
-      </div>
-
-      <a href="https://repetitiorepetitio.blogspot.com/" target='_blank'>
-        <div id='blog--svg-container'></div>
-      </a>
       </section>
     );
   }
@@ -47,6 +45,7 @@ function createSVG() {
     x = Math.floor(w / z),
     y = Math.floor(h / z);
     z = w/x
+  d3.select("#blog--svg-container svg").remove()
   var svg = d3.select("#blog--svg-container").append("svg")
     .attr("width", w)
     .attr("height", h);
