@@ -1,0 +1,32 @@
+name: Publish
+on:
+  push:
+    branches:
+      - master
+      - migration
+#      TODO remove migration
+
+jobs:
+  push_new_version:
+    runs-on: ubuntu-16.04
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 1
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Setup Node.js
+        uses: actions/setup-node@v1
+      - name: Install packages
+        run: yarn
+      - run: yarn build
+      - name: Build & Deploy
+        run: |
+          /bin/bash .github/scripts/prepareAwsCredentials.sh
+          npx serverless deploy --aws-profile sawka-pro
+          yarn deploy
+          rm ~/.aws/credentials
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          AWS_PROFILE_NAME: ${{ secrets.AWS_PROFILE_NAME }}
+          WEBSITE_DISTRIBUTION_ID: ${{ secrets.WEBSITE_DISTRIBUTION_ID }}

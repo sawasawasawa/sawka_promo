@@ -24,9 +24,13 @@
     "build": "gatsby build",
     "develop": "gatsby develop",
     "format": "prettier --write 'src/**/*.js'",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "deploy": "sh ./scripts/deployToS3.sh s3://www.sawka.promo && npm run invalidate",
+    "invalidate": "aws --profile $AWS_PROFILE_NAME cloudfront create-invalidation --distribution-id $WEBSITE_DISTRIBUTION_ID --paths \"/*\""
   },
   "devDependencies": {
-    "prettier": "^1.11.1"
+    "prettier": "^1.11.1",
+    "serverless": "^1.71.3",
+    "serverless-certificate-creator": "^1.3.0"
   }
 }

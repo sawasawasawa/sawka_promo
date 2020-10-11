@@ -1,0 +1,328 @@
+{
+  "AWSTemplateFormatVersion": "2010-09-09",
+  "Description": "The AWS CloudFormation template for this Serverless application",
+  "Resources": {
+    "ServerlessDeploymentBucket": {
+      "Type": "AWS::S3::Bucket",
+      "Properties": {
+        "BucketEncryption": {
+          "ServerSideEncryptionConfiguration": [
+            {
+              "ServerSideEncryptionByDefault": {
+                "SSEAlgorithm": "AES256"
+              }
+            }
+          ]
+        }
+      }
+    },
+    "ServerlessDeploymentBucketPolicy": {
+      "Type": "AWS::S3::BucketPolicy",
+      "Properties": {
+        "Bucket": {
+          "Ref": "ServerlessDeploymentBucket"
+        },
+        "PolicyDocument": {
+          "Statement": [
+            {
+              "Action": "s3:*",
+              "Effect": "Deny",
+              "Principal": "*",
+              "Resource": [
+                {
+                  "Fn::Join": [
+                    "",
+                    [
+                      "arn:",
+                      {
+                        "Ref": "AWS::Partition"
+                      },
+                      ":s3:::",
+                      {
+                        "Ref": "ServerlessDeploymentBucket"
+                      },
+                      "/*"
+                    ]
+                  ]
+                }
+              ],
+              "Condition": {
+                "Bool": {
+                  "aws:SecureTransport": false
+                }
+              }
+            }
+          ]
+        }
+      }
+    },
+    "DomainZone": {
+      "Type": "AWS::Route53::HostedZone",
+      "Properties": {
+        "Name": "sawka.promo",
+        "HostedZoneConfig": {
+          "Comment": "sawka.promo domain zone"
+        }
+      }
+    },
+    "ExistingDNSRecords": {
+      "Type": "AWS::Route53::RecordSetGroup",
+      "Properties": {
+        "HostedZoneId": {
+          "Ref": "DomainZone"
+        },
+        "RecordSets": [
+          {
+            "Name": "sawka.promo.",
+            "Type": "MX",
+            "ResourceRecords": [
+              "1 mx1.mail.ovh.net.",
+              "5 mx2.mail.ovh.net.",
+              "100 mx3.mail.ovh.net."
+            ],
+            "TTL": "300"
+          }
+        ]
+      }
+    },
+    "WebsiteBucket": {
+      "Type": "AWS::S3::Bucket",
+      "Properties": {
+        "BucketName": "www.sawka.promo",
+        "AccessControl": "Private",
+        "WebsiteConfiguration": {
+          "IndexDocument": "index.html",
+          "ErrorDocument": "error.html"
+        }
+      }
+    },
+    "BucketPolicyWebsiteBucket": {
+      "Type": "AWS::S3::BucketPolicy",
+      "Properties": {
+        "PolicyDocument": {
+          "Statement": [
+            {
+              "Sid": "PublicReadGetObject",
+              "Effect": "Allow",
+              "Principal": "*",
+              "Action": [
+                "s3:GetObject"
+              ],
+              "Resource": "arn:aws:s3:::www.sawka.promo/*"
+            }
+          ]
+        },
+        "Bucket": {
+          "Ref": "WebsiteBucket"
+        }
+      }
+    },
+    "RedirectBucket": {
+      "Type": "AWS::S3::Bucket",
+      "Properties": {
+        "BucketName": "sawka.promo",
+        "AccessControl": "PublicRead",
+        "WebsiteConfiguration": {
+          "RedirectAllRequestsTo": {
+            "HostName": "www.sawka.promo",
+            "Protocol": "https"
+          }
+        }
+      }
+    },
+    "WebsiteDistribution": {
+      "Type": "AWS::CloudFront::Distribution",
+      "Properties": {
+        "DistributionConfig": {
+          "Aliases": [
+            "www.sawka.promo"
+          ],
+          "DefaultCacheBehavior": {
+            "TargetOriginId": "WebsiteOriginBucket",
+            "ViewerProtocolPolicy": "redirect-to-https",
+            "Compress": true,
+            "ForwardedValues": {
+              "QueryString": false,
+              "Cookies": {
+                "Forward": "none"
+              }
+            }
+          },
+          "DefaultRootObject": "index.html",
+          "Enabled": true,
+          "HttpVersion": "http2",
+          "ViewerCertificate": {
+            "AcmCertificateArn": "arn:aws:acm:us-east-1:993894706055:certificate/96ef7410-2e5d-4acc-82b8-035ebe03e734",
+            "SslSupportMethod": "sni-only"
+          },
+          "Origins": [
+            {
+              "Id": "WebsiteOriginBucket",
+              "DomainName": {
+                "Fn::Select": [
+                  2,
+                  {
+                    "Fn::Split": [
+                      "/",
+                      {
+                        "Fn::GetAtt": [
+                          "WebsiteBucket",
+                          "WebsiteURL"
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              "CustomOriginConfig": {
+                "OriginProtocolPolicy": "http-only"
+              }
+            }
+          ],
+          "CustomErrorResponses": [
+            {
+              "ErrorCode": "403",
+              "ErrorCachingMinTTL": 1,
+              "ResponseCode": 403,
+              "ResponsePagePath": "/index.html"
+            },
+            {
+              "ErrorCode": "404",
+              "ErrorCachingMinTTL": 1,
+              "ResponseCode": 404,
+              "ResponsePagePath": "/index.html"
+            },
+            {
+              "ErrorCode": "500",
+              "ErrorCachingMinTTL": 1,
+              "ResponseCode": 500,
+              "ResponsePagePath": "/index.html"
+            },
+            {
+              "ErrorCode": "502",
+              "ErrorCachingMinTTL": 1,
+              "ResponseCode": 502,
+              "ResponsePagePath": "/index.html"
+            },
+            {
+              "ErrorCode": "503",
+              "ErrorCachingMinTTL": 1,
+              "ResponseCode": 503,
+              "ResponsePagePath": "/index.html"
+            },
+            {
+              "ErrorCode": "504",
+              "ErrorCachingMinTTL": 1,
+              "ResponseCode": 504,
+              "ResponsePagePath": "/index.html"
+            }
+          ]
+        }
+      }
+    },
+    "RedirectDistribution": {
+      "Type": "AWS::CloudFront::Distribution",
+      "Properties": {
+        "DistributionConfig": {
+          "Aliases": [
+            "sawka.promo"
+          ],
+          "DefaultCacheBehavior": {
+            "TargetOriginId": "RedirectOriginBucket",
+            "ViewerProtocolPolicy": "redirect-to-https",
+            "Compress": true,
+            "ForwardedValues": {
+              "QueryString": false,
+              "Cookies": {
+                "Forward": "none"
+              }
+            }
+          },
+          "Enabled": true,
+          "HttpVersion": "http2",
+          "ViewerCertificate": {
+            "AcmCertificateArn": "arn:aws:acm:us-east-1:993894706055:certificate/96ef7410-2e5d-4acc-82b8-035ebe03e734",
+            "SslSupportMethod": "sni-only"
+          },
+          "Origins": [
+            {
+              "Id": "RedirectOriginBucket",
+              "DomainName": {
+                "Fn::Select": [
+                  2,
+                  {
+                    "Fn::Split": [
+                      "/",
+                      {
+                        "Fn::GetAtt": [
+                          "RedirectBucket",
+                          "WebsiteURL"
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              "CustomOriginConfig": {
+                "OriginProtocolPolicy": "http-only"
+              }
+            }
+          ]
+        }
+      }
+    },
+    "WebsiteDNSRecords": {
+      "Type": "AWS::Route53::RecordSetGroup",
+      "Properties": {
+        "HostedZoneId": {
+          "Ref": "DomainZone"
+        },
+        "RecordSets": [
+          {
+            "Name": "www.sawka.promo.",
+            "Type": "A",
+            "AliasTarget": {
+              "HostedZoneId": "Z2FDTNDATAQYW2",
+              "DNSName": {
+                "Fn::GetAtt": [
+                  "WebsiteDistribution",
+                  "DomainName"
+                ]
+              }
+            }
+          }
+        ]
+      }
+    },
+    "RedirectDNSRecords": {
+      "Type": "AWS::Route53::RecordSetGroup",
+      "Properties": {
+        "HostedZoneId": {
+          "Ref": "DomainZone"
+        },
+        "RecordSets": [
+          {
+            "Name": "sawka.promo.",
+            "Type": "A",
+            "AliasTarget": {
+              "HostedZoneId": "Z2FDTNDATAQYW2",
+              "DNSName": {
+                "Fn::GetAtt": [
+                  "RedirectDistribution",
+                  "DomainName"
+                ]
+              }
+            }
+          }
+        ]
+      }
+    }
+  },
+  "Outputs": {
+    "ServerlessDeploymentBucketName": {
+      "Value": {
+        "Ref": "ServerlessDeploymentBucket"
+      }
+    }
+  }
+}

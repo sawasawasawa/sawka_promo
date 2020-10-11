@@ -28,9 +28,9 @@ class MamaNiunikaAnimation extends React.Component {
     return (
       <div className="MamaNiunika">
         <TransitionGroup id='heroes-animation'>
-          <Hero id='niunik' src='../img/superniunik.gif'/>
-          <Hero id='mama' src='../img/mamaNiunika.gif'/>
-          <Hero id='dog' src='../img/dog.gif'/>
+          <Hero id='niunik' src='/superniunik.gif'/>
+          <Hero id='mama' src='/mamaNiunika.gif'/>
+          <Hero id='dog' src='/dog.gif'/>
         </TransitionGroup>
       </div>
     )
