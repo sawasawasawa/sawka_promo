@@ -5,7 +5,7 @@
   "author": "Kyle Mathews <mathews.kyle@gmail.com>",
   "dependencies": {
     "d3": "^5.0.0",
-    "gatsby": "^1.9.241",
+    "gatsby": "^5.3.3",
     "gatsby-link": "^1.6.39",
     "gatsby-plugin-react-helmet": "^2.0.8",
     "gsap": "^1.20.4",
